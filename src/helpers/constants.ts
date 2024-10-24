@@ -18,11 +18,10 @@ enum DatabaseTags {
 }
 
 enum UserRole {
-    ADMIN = 'admin', //Acesso total à coleções e projetos
-    EDITOR = 'editor', //Ver e editar dados das coleções existentes
+    ADMIN = 'admin', // Acesso total às coleções e projetos
+    EDITOR = 'editor', // Ver e editar dados das coleções existentes
     VIEWER = 'viewer', // Apenas ver os dados
 }
-
 
 function handleSQLRepositoryProvider(tag: string, entity: EntityTarget<ObjectLiteral>, dbTagToInject: string = DatabaseTags.SQL) {
     return {
@@ -31,7 +30,6 @@ function handleSQLRepositoryProvider(tag: string, entity: EntityTarget<ObjectLit
         inject: [dbTagToInject],
     }
 }
-
 
 export {
     RepositoriesTag, DatabaseTags, UserRole, handleSQLRepositoryProvider as handleProvider

@@ -17,20 +17,17 @@ async function bootstrap() {
 
   const configService = app.get(EnvService);
 
-  // const config = new DocumentBuilder()
-  //   .setTitle("plann.er")
-  //   .setDescription(
-  //     "Especificações da API para o back-end da aplicação plann.er",
-  //   )
-  //   .setVersion("1.0.0")
-  //   .addTag("trips")
-  //   .addTag("participants")
-  //   .addTag("activities")
-  //   .addTag("links")
-  //   .build();
+  const config = new DocumentBuilder()
+    .setTitle("Crudbox-Api")
+    .setDescription(
+      "Especificações da API para o back-end da aplicação crubox",
+    )
+    .setVersion("1.0.0")
+    // .addTag("links")
+    .build();
 
-  // const document = SwaggerModule.createDocument(app, config);
-  // SwaggerModule.setup("docs", app, document);
+  const document = SwaggerModule.createDocument(app, config);
+  SwaggerModule.setup("docs", app, document);
 
   app.useGlobalPipes(new ZodValidationPipe())
   app.useGlobalFilters(new ZodFilter())

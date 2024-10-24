@@ -14,28 +14,28 @@ export const databaseProviders = [
                 database: env.get("DB_NAME"),
                 ssl: true,
                 entities: [
-                    __dirname + '../../application/entities/*.entity{.ts,.js}',
+                    __dirname + '/../domain/entities/*.entity{.ts,.js}', // Corrigido caminho
                 ],
-                // synchronize: true
-            })
+                // synchronize: true // opcional, ativar apenas em desenvolvimento
+            });
 
             return dataSource.initialize();
         },
-        inject: [EnvService],  // Injetando o EnvService
+        inject: [EnvService],
     },
     {
         provide: DatabaseTags.NOSQL,
         useFactory: async (env: EnvService) => {
             const dataSource = new DataSource({
                 type: 'mongodb',
-                url: `mongodb+srv://${env.get('MONGO_USER')}:${env.get('MONGO_PASSWORD')}@${env.get('MONGO_HOST')}/?retryWrites=true&w=majority&appName=${env.get('MONGO_APPNAME')}`,
+                url: env.get('MONGO_URL'),
                 entities: [
-                    __dirname + '../../domain/entities/*.entity{.ts,.js}',
+                    __dirname + '/../domain/entities/*.entity{.ts,.js}',
                 ],
-            })
+            });
 
             return dataSource.initialize();
         },
-        inject: [EnvService],  // Injetando o EnvService
+        inject: [EnvService],
     }
-]
+];

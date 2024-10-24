@@ -2,7 +2,8 @@ import { Entity, Column, ManyToMany, JoinTable, PrimaryGeneratedColumn } from "t
 import { IsEmail, IsNotEmpty } from "class-validator";
 import { Tenant } from "./tenant.entity";
 import { UserTenant } from "./userTenant.entity";
-import { DatabaseTags } from "@/helpers/constants";
+import { DatabaseTags, handleProvider, RepositoriesTag } from "@/helpers/constants";
+import { Collection, CollectionNOSQL } from "../entities/collection.entity";
 
 @Entity({ database: DatabaseTags.SQL })
 export class User {
@@ -16,7 +17,7 @@ export class User {
     lastName: string
 
     @Column({ unique: true })
-    @IsEmail({}, { message: 'Endereço de Emailerrado' })
+    @IsEmail({}, { message: 'Endereço de Email inválido' })
     email: string
 
     @Column()
@@ -32,3 +33,9 @@ export class User {
         return `${this.firstName} ${this.lastName}`
     }
 }
+
+export const collectionProviders = [
+    handleProvider(RepositoriesTag.COLLECTION, Collection),
+    handleProvider(RepositoriesTag.COLLECTION_NOSQL, CollectionNOSQL, DatabaseTags.NOSQL)
+];
+

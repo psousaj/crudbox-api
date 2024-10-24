@@ -1,16 +1,16 @@
 import { Repository } from "typeorm";
 import { Inject, Injectable } from "@nestjs/common";
-import { RepositoriesTag } from "@/helpers/constants";
+import { DatabaseTags } from "@/helpers/constants";
 import { UserTenant } from "../entities/userTenant.entity";
 
 @Injectable()
-export class UserService {
+export class UserTenantService {
     constructor(
-        @Inject(RepositoriesTag.USER_TENANT)
-        private userRepository: Repository<UserTenant>
+        @Inject(DatabaseTags.SQL)
+        private userTenantRepository: Repository<UserTenant>
     ) { }
 
     async findAll(): Promise<UserTenant[]> {
-        return this.userRepository.find();
+        return this.userTenantRepository.find();
     }
 }
