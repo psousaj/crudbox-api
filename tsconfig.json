@@ -12,10 +12,10 @@
     "baseUrl": "./",
     "paths": {
       "@/*": ["src/*"],
-      "@helpers/*": ["src/helpers/*"],
-      "@infra/*": ["src/infraestructure/*"],
-      "@app/*": ["src/domain/*"],
-      "@type/*": ["src/helpers/@type/*"]
+      "@common/*": ["src/common/*"],
+      "@infra/*": ["src/infra/*"],
+      "@domain/*": ["src/domain/*"],
+      "@type/*": ["src/common/@type/*"]
     },
     "incremental": true,
     "skipLibCheck": true,
