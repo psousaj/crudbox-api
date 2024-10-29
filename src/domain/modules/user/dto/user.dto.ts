@@ -1,3 +1,4 @@
+import { IsNotEmpty, IsUUID } from 'class-validator';
 import { z } from 'zod';
 
 export const CreateUserSchema = z.object({
@@ -6,6 +7,20 @@ export const CreateUserSchema = z.object({
     email: z.string().email({ message: 'Endereço de Email inválido' }),
     password: z.string({ message: "A senha é obrigatória" }),
 });
+
+export class CreateUserTestDTO {
+    @IsNotEmpty({ message: "Precisa mandar o nome" })
+    firstName: string
+
+    @IsNotEmpty()
+    lastName: string
+
+    @IsNotEmpty()
+    email: string
+
+    @IsNotEmpty()
+    password: string
+}
 
 export const UpdateUserSchema = z.object({
     firstName: z.string().optional(),

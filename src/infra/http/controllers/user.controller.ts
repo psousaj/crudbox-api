@@ -1,5 +1,5 @@
 import { ZodValidationPipe } from '@/common/zod.validation.pipe';
-import { CreateUserSchema, UpdateUserSchema } from '@/domain/modules/user/dto/user.dto';
+import { CreateUserSchema, CreateUserTestDTO, UpdateUserSchema } from '@/domain/modules/user/dto/user.dto';
 import { User } from '@/domain/modules/user/entities/user.entity';
 import { UserService } from '@/domain/modules/user/services/user.service';
 import { Controller, Get, Post, Put, Delete, Body, Param } from '@nestjs/common';
@@ -24,7 +24,7 @@ export class UserController {
 
     @Post()
     @ApiResponse({ status: 201, description: 'Usuário criado' })
-    async create(@Body(new ZodValidationPipe(CreateUserSchema)) createUserDto: any): Promise<User> {
+    async create(@Body() createUserDto: CreateUserTestDTO): Promise<User> {
         return this.userService.create(createUserDto);
     }
 
