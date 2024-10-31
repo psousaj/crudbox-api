@@ -2,7 +2,6 @@ import { Column, Entity, ManyToOne, ObjectId, ObjectIdColumn, OneToMany, Primary
 import { DatabaseTags } from "@/common/constants";
 import { Project } from "@domain/modules/project/entities/project.entity";
 import { DataItem } from "@domain/modules/dataItem/entities/dataItem.entity";
-import { DataItemNOSQL } from "@domain/modules/dataItem/entities/dataItem.document";
 
 @Entity({ database: DatabaseTags.SQL })
 export class Collection {
@@ -13,10 +12,10 @@ export class Collection {
     @Column({ nullable: false })
     name: string
 
-    @ManyToOne(() => Project, (project) => project.collections, { onDelete: 'CASCADE' })
+    @ManyToOne(() => Project, (project) => project.collections, { onDelete: 'CASCADE', nullable: false })
     project: Project
 
-    @OneToMany(() => DataItem, (d_i) => d_i.collection)
+    @OneToMany(() => DataItem, (d_i) => d_i.collection, { onDelete: 'CASCADE', nullable: true })
     items: DataItem
 
 }

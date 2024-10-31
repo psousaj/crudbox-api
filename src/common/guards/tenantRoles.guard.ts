@@ -19,7 +19,7 @@ export class TenantRolesGuard implements CanActivate {
         ]);
         if (!requiredRoles) return true;
 
-        const request = context.switchToHttp().getRequest<{ user: User, route: any, method: any, params: any }>();
+        const request = context.switchToHttp().getRequest<{ user: User, route: any, method: any, params: any, body: any }>();
         const user = request.user;  // Usuário autenticado pelo JwtAuthGuard
         const routePath = request.route?.path;  // Captura o caminho da rota atual
         const method = request.method;  // Captura o método HTTP (GET, POST, etc.)
@@ -30,7 +30,7 @@ export class TenantRolesGuard implements CanActivate {
 
         if (routePath.includes('/collections')) {
             // Exemplo de obtenção do tenantId para rota relacionada a Collection
-            const collectionId = request.params.collectionId;
+            const collectionId = request.body?.collectionId;
             const project = await this.userTenantService.getProjectByCollection(collectionId);
             tenantId = project?.tenant.id;
         } else if (routePath.includes('/projects')) {

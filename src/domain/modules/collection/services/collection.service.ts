@@ -10,8 +10,8 @@ export class CollectionService {
         @Inject(RepositoriesTag.COLLECTION)
         private collectionRepository: Repository<Collection>,
 
-        // @Inject(RepositoriesTag.COLLECTION_NOSQL)
-        // private collectionNoSQLRepository: Repository<CollectionNOSQL>
+        @Inject(RepositoriesTag.COLLECTION_NOSQL)
+        private collectionNoSQLRepository: Repository<CollectionNOSQL>
     ) { }
 
     async findAll(): Promise<Collection[]> {
@@ -36,25 +36,25 @@ export class CollectionService {
         await this.collectionRepository.delete(id);
     }
 
-    // async findAllNoSQL(): Promise<CollectionNOSQL[]> {
-    //     return this.collectionNoSQLRepository.find();
-    // }
+    async findAllNoSQL(): Promise<CollectionNOSQL[]> {
+        return this.collectionNoSQLRepository.find();
+    }
 
-    // async findNoSQLById(id: string): Promise<CollectionNOSQL> {
-    //     return this.collectionNoSQLRepository.findOneBy({ id: new ObjectId(id) });
-    // }
+    async findNoSQLById(id: string): Promise<CollectionNOSQL> {
+        return this.collectionNoSQLRepository.findOneBy({ id: new ObjectId(id) });
+    }
 
-    // async createNoSQL(collectionData: Partial<CollectionNOSQL>): Promise<CollectionNOSQL> {
-    //     const collection = this.collectionNoSQLRepository.create(collectionData);
-    //     return this.collectionNoSQLRepository.save(collection);
-    // }
+    async createNoSQL(collectionData: Partial<CollectionNOSQL>): Promise<CollectionNOSQL> {
+        const collection = this.collectionNoSQLRepository.create(collectionData);
+        return this.collectionNoSQLRepository.save(collection);
+    }
 
-    // async updateNoSQL(id: string, collectionData: Partial<CollectionNOSQL>): Promise<CollectionNOSQL> {
-    //     await this.collectionNoSQLRepository.update(id, collectionData);
-    //     return this.findNoSQLById(id);
-    // }
+    async updateNoSQL(id: string, collectionData: Partial<CollectionNOSQL>): Promise<CollectionNOSQL> {
+        await this.collectionNoSQLRepository.update(id, collectionData);
+        return this.findNoSQLById(id);
+    }
 
-    // async deleteNoSQL(id: string): Promise<void> {
-    //     await this.collectionNoSQLRepository.delete(id);
-    // }
+    async deleteNoSQL(id: string): Promise<void> {
+        await this.collectionNoSQLRepository.delete(id);
+    }
 }

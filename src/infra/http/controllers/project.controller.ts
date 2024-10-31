@@ -30,7 +30,8 @@ export class ProjectController {
     @RequiredRoles(UserRole.ADMIN)
     @Post()
     @ApiResponse({ status: 201, description: 'Projeto criado' })
-    async create(@Body(new ZodValidationPipe(createProjectSchema)) createProjectDto: CreateProjectDto): Promise<Project> {
+    async create(@Body(new ZodValidationPipe(createProjectSchema)) createProjectDto: CreateProjectDto): Promise<CreateProjectDto> {
+        console.log('Criei projeto')
         return this.projectService.create(createProjectDto);
     }
 

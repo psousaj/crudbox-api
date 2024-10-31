@@ -14,9 +14,9 @@ export class Project {
     @IsNotEmpty()
     name: string
 
-    @ManyToOne(() => Tenant, (tenant) => tenant.projects, { onDelete: 'CASCADE' })
+    @ManyToOne(() => Tenant, (tenant) => tenant.projects, { onDelete: 'CASCADE', nullable: false })
     tenant: Tenant
 
-    @OneToMany(() => Collection, (collection) => collection.project)
+    @OneToMany(() => Collection, (collection) => collection.project, { onDelete: 'CASCADE', nullable: true })
     collections: Collection[]
 }

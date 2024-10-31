@@ -4,5 +4,5 @@ import { CollectionNOSQL } from "@domain/modules/collection/entities/collection.
 
 export const collectionRepositories = [
     handleProvider(RepositoriesTag.COLLECTION, Collection),
-    // handleProvider(RepositoriesTag.COLLECTION_NOSQL, CollectionNOSQL, DatabaseTags.NOSQL)
+    handleProvider(RepositoriesTag.COLLECTION_NOSQL, CollectionNOSQL, DatabaseTags.NOSQL)
 ];

@@ -23,7 +23,8 @@ export class UserService {
     }
 
     async create(userData: Partial<User>): Promise<User> {
-        const existingUser = this.findByEmail(userData.email)
+        const existingUser = await this.findByEmail(userData.email)
+        console.log(existingUser)
         if (existingUser) {
             throw new ConflictException('Email já está em uso.');
         }

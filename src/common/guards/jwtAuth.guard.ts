@@ -30,7 +30,6 @@ export class JwtAuthGuard extends AuthGuard('jwt') {
         if (err || !user) {
             throw err || new UnauthorizedException();
         }
-        console.log('Usuário autenticado:', user);
         return user; // Aqui, o usuário autenticado é retornado e tipado como TUser
     }
 }

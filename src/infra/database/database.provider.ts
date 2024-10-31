@@ -12,9 +12,10 @@ export const dataSourcesProviders = [
                 username: env.get("DB_USERNAME"),
                 password: env.get("DB_PASSWORD"),
                 database: env.get("DB_NAME"),
+                port: 5432,
                 entities: [__dirname + '/../../domain/modules/*/entities/*.entity{.ts,.js}'],
                 migrations: [__dirname + '/migrations/**/*{.ts,.js}'],
-                ssl: true,
+                // ssl: true,
                 synchronize: true
             });
             const ds = dataSource.initialize();
@@ -22,21 +23,21 @@ export const dataSourcesProviders = [
         },
         inject: [EnvService],
     },
-    // {
-    //     provide: DatabaseTags.NOSQL,
-    //     useFactory: async (env: EnvService) => {
-    //         const dataSource = new DataSource({
-    //             type: 'mongodb',
-    //             url: env.get('MONGO_URL'),
-    //             entities: [__dirname + '/../../domain/modules/*/entities/*.document{.ts,.js}'],
-    //             ssl: true,
-    //         });
+    {
+        provide: DatabaseTags.NOSQL,
+        useFactory: async (env: EnvService) => {
+            const dataSource = new DataSource({
+                type: 'mongodb',
+                url: env.get('MONGO_URL'),
+                entities: [__dirname + '/../../domain/modules/*/entities/*.document{.ts,.js}'],
+                // ssl: true,
+            });
 
-    //         const ds = await dataSource.initialize();
-    //         return ds
-    //     },
-    //     inject: [EnvService],
-    // }
+            const ds = await dataSource.initialize();
+            return ds
+        },
+        inject: [EnvService],
+    }
 ]
 
 
