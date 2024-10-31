@@ -1,7 +1,8 @@
 import { Injectable, Module } from "@nestjs/common";
+import { EnvService } from "./env.service";
 
 @Module({
-    providers: [],
-    exports: [],
+    providers: [EnvService],
+    exports: [EnvService],
 })
 export class EnvModule { }

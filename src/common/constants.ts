@@ -17,9 +17,10 @@ enum DatabaseTags {
 }
 
 enum UserRole {
-    ADMIN = 'admin', // Acesso total às coleções e projetos
-    EDITOR = 'editor', // Ver e editar dados das coleções existentes
-    VIEWER = 'viewer', // Apenas ver os dados
+    STAFF = 'is_staff',
+    ADMIN = 'is_admin', // Acesso total às coleções e projetos
+    EDITOR = 'is_editor', // Ver e editar dados das coleções existentes
+    VIEWER = 'only_viewer', // Apenas ver os dados
 }
 
 function handleSQLRepositoryProvider(tag: string, entity: EntityTarget<ObjectLiteral>, dbTagToInject: string = DatabaseTags.SQL) {

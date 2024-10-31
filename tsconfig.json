@@ -12,6 +12,7 @@
     "baseUrl": "./",
     "paths": {
       "@/*": ["src/*"],
+      "@auth/*": ["src/auth/*"],
       "@common/*": ["src/common/*"],
       "@infra/*": ["src/infra/*"],
       "@domain/*": ["src/domain/*"],

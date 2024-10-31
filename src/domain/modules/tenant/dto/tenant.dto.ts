@@ -1,9 +1,8 @@
 import { z } from 'zod';
 
-export const CreateTenantSchema = z.object({
+export const createTenantSchema = z.object({
     name: z.string({ message: "O nome é obrigatório" }),
 });
 
-export const UpdateTenantSchema = z.object({
-    name: z.string().optional(),
-});
+export type CreateTenantDto = z.infer<typeof createTenantSchema>;
+export type UpdateTenantDto = Partial<CreateTenantDto>;

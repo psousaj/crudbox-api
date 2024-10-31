@@ -22,21 +22,21 @@ export const dataSourcesProviders = [
         },
         inject: [EnvService],
     },
-    {
-        provide: DatabaseTags.NOSQL,
-        useFactory: async (env: EnvService) => {
-            const dataSource = new DataSource({
-                type: 'mongodb',
-                url: env.get('MONGO_URL'),
-                entities: [__dirname + '/../../domain/modules/*/entities/*.document{.ts,.js}'],
-                ssl: true,
-            });
+    // {
+    //     provide: DatabaseTags.NOSQL,
+    //     useFactory: async (env: EnvService) => {
+    //         const dataSource = new DataSource({
+    //             type: 'mongodb',
+    //             url: env.get('MONGO_URL'),
+    //             entities: [__dirname + '/../../domain/modules/*/entities/*.document{.ts,.js}'],
+    //             ssl: true,
+    //         });
 
-            const ds = await dataSource.initialize();
-            return ds
-        },
-        inject: [EnvService],
-    }
+    //         const ds = await dataSource.initialize();
+    //         return ds
+    //     },
+    //     inject: [EnvService],
+    // }
 ]
 
 

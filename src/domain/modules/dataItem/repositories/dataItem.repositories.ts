@@ -4,5 +4,5 @@ import { DataItemNOSQL } from "@domain/modules/dataItem/entities/dataItem.docume
 
 export const dataItemRepositories = [
     handleProvider(RepositoriesTag.DATA_ITEM, DataItem),
-    handleProvider(RepositoriesTag.DATA_ITEM_NOSQL, DataItemNOSQL, DatabaseTags.NOSQL),
+    // handleProvider(RepositoriesTag.DATA_ITEM_NOSQL, DataItemNOSQL, DatabaseTags.NOSQL),
 ]

@@ -22,7 +22,7 @@ async function bootstrap() {
   SwaggerModule.setup("docs", app, document);
 
   app.useGlobalFilters(new ZodFilter());
-  app.useGlobalPipes(new ValidationPipe())
+  // app.useGlobalPipes(new ValidationPipe())
 
   if (configService.get("NODE_ENV") !== "development") {
     app.setGlobalPrefix('api/v1');

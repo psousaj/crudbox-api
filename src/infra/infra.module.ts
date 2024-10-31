@@ -4,7 +4,6 @@ import { CollectionController } from "@infra/http/controllers/collection.control
 import { ProjectController } from "@infra/http/controllers/project.controller";
 import { TenantController } from "@infra/http/controllers/tenant.controller";
 import { UserController } from "@infra/http/controllers/user.controller";
-import { UserTenantController } from "@infra/http/controllers/userTenant.controller";
 import { CollectionModule } from "@/domain/modules/collection/collection.module";
 import { DataItemModule } from "@/domain/modules/dataItem/dataItem.module";
 import { ProjectModule } from "@/domain/modules/project/project.module";
@@ -27,7 +26,6 @@ import { UserTenantModule } from "@/domain/modules/userTenant/userTenant.module"
         ProjectController,
         TenantController,
         UserController,
-        UserTenantController
     ],
 })
 export class InfraModule { }

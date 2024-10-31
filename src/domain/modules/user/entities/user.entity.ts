@@ -22,6 +22,12 @@ export class User {
     @IsNotEmpty()
     password: string;
 
+    @Column({ default: true })
+    isActive: boolean;
+
+    @Column({ default: false })
+    isStaff: boolean;
+
     // Atualização: `@OneToMany` para `UserTenant`
     @OneToMany(() => UserTenant, userTenant => userTenant.user)
     tenants: UserTenant[];

@@ -6,6 +6,7 @@ const envSchema = z.object({
     DB_PASSWORD: z.string({ message: 'Necessário informar a senha do banco de dados' }),
     DB_NAME: z.string({ message: 'Necessário informar o banco de dados' }),
     MONGO_URL: z.string({ message: 'Necessário informar o banco de dados NOSQL' }),
+    JWT_SECRET: z.string({ message: 'Necessário informar um secret para o JWT' }),
     NODE_ENV: z
         .enum(['development', 'test', 'production'])
         .default('development'),
@@ -13,7 +14,5 @@ const envSchema = z.object({
 })
 
 type Env = z.infer<typeof envSchema>;
-
-// export const env = envSchema.parse(process.env)
 
 export { Env, envSchema }
