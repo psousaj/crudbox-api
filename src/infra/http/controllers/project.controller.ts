@@ -1,8 +1,8 @@
 import { Controller, Get, Post, Put, Delete, Body, Param, ParseUUIDPipe } from '@nestjs/common';
 import { ApiTags, ApiResponse } from '@nestjs/swagger';
 // 
-import { ProjectService } from '@/domain/modules/project/services/project.service';
-import { Project } from '@/domain/modules/project/entities/project.entity';
+import { ProjectService } from '@/domain/services/project.service';
+import { Project } from '@/domain/entities/project.entity';
 import { ZodValidationPipe } from '@/common/zod.validation.pipe';
 import { CreateProjectDto, createProjectSchema } from '@/domain/modules/project/dto/project.dto';
 import { UserRole } from '@/common/constants';

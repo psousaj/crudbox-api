@@ -2,18 +2,43 @@ import { DataSource, EntityTarget, ObjectLiteral } from "typeorm";
 
 enum RepositoriesTag {
     USER = 'USER_REPOSITORY',
-    TENANT = 'TENANT_REPOSITORY',
-    USER_TENANT = 'USER_TENANT_REPOSITORY',
+    ORGANIZATION = 'ORGANIZATION_REPOSITORY',
+    USER_ORGANIZATION = 'USER_ORGANIZATION_REPOSITORY',
     PROJECT = 'PROJECT_REPOSITORY',
+    USER_PROJECT = 'USER_PROJECT_REPOSITORY',
     COLLECTION = 'COLLECTION_REPOSITORY',
-    DATA_ITEM = 'DATA_ITEM_REPOSITORY',
-    COLLECTION_NOSQL = 'COLLECTION_NOSQL_REPOSITORY',
-    DATA_ITEM_NOSQL = 'DATA_ITEM_NOSQL_REPOSITORY'
+    COLLECTION_SCHEMA = 'COLLECTION_SCHEMA_REPOSITORY',
+    COLLECTION_FIELD = 'COLLECTION_FIELD',
+    COLLECTION_RECORD = 'COLLECTION_RECORD',
+    COLLECTION_RECORD_VALUE = 'COLLECTION_RECORD_VALUE',
+    COLLECTION_RECORD_NOSQL = 'COLLECTION_DATA_NOSQL_REPOSITORY'
+}
+
+enum OrganizationType {
+    PERSONAL_USER = 'PERSONAL_USER',
+    COMPANY = 'COMPANY',
+}
+
+enum ParticipationType {
+    OWNER = 'OWNER',
+    GUEST = 'INVITED'
 }
 
 enum DatabaseTags {
     SQL = 'POSTGRES',
-    NOSQL = 'MONGO'
+    NOSQL = 'MONGODB'
+}
+
+enum EntityRelationEvents {
+    PROJECT = 'project.created',
+}
+
+enum CollectionFieldType {
+    TEXT = 'text',
+    IMAGE = 'image',
+    NUMERIC = 'numeric',
+    DATE = 'date',
+    DATETIME = 'datetime',
 }
 
 enum UserRole {
@@ -32,5 +57,12 @@ function handleSQLRepositoryProvider(tag: string, entity: EntityTarget<ObjectLit
 }
 
 export {
-    RepositoriesTag, DatabaseTags, UserRole, handleSQLRepositoryProvider as handleProvider
+    RepositoriesTag,
+    DatabaseTags,
+    UserRole,
+    EntityRelationEvents,
+    CollectionFieldType,
+    OrganizationType,
+    ParticipationType,
+    handleSQLRepositoryProvider as handleProvider
 }

@@ -8,7 +8,7 @@ import { APP_GUARD } from '@nestjs/core';
 import { TenantRolesGuard } from '@common/guards/tenantRoles.guard';
 import { AuthModule } from '@auth/auth.module';
 import { JwtAuthGuard } from '@common/guards/jwtAuth.guard';
-import { UserTenantService } from './domain/modules/userTenant/services/userTenant.service';
+import { UserTenantService } from './domain/services/userTenant.service';
 import { UserTenantModule } from './domain/modules/userTenant/userTenant.module';
 
 @Module({

@@ -4,22 +4,12 @@ import { CollectionController } from "@infra/http/controllers/collection.control
 import { ProjectController } from "@infra/http/controllers/project.controller";
 import { TenantController } from "@infra/http/controllers/tenant.controller";
 import { UserController } from "@infra/http/controllers/user.controller";
-import { CollectionModule } from "@/domain/modules/collection/collection.module";
-import { DataItemModule } from "@/domain/modules/dataItem/dataItem.module";
-import { ProjectModule } from "@/domain/modules/project/project.module";
-import { TenantModule } from "@/domain/modules/tenant/tenant.module";
-import { UserModule } from "@/domain/modules/user/user.module";
-import { UserTenantModule } from "@/domain/modules/userTenant/userTenant.module";
+import { DomainModule } from "@/domain/domain.module";
 
 @Module({
     imports: [
         DatabaseModule,
-        CollectionModule,
-        DataItemModule,
-        ProjectModule,
-        TenantModule,
-        UserModule,
-        UserTenantModule
+        DomainModule
     ],
     controllers: [
         CollectionController,
